@@ -1,0 +1,40 @@
+# Ambiente virtual Python
+venv/
+
+# Instância do Flask (configurações, banco local, etc.)
+instance/
+
+# Logs e arquivos temporários
+*.log
+*.pid
+*.seed
+*.pid.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache e compilação
+__pycache__/
+*.py[cod]
+*.so
+
+# Dados sensíveis e variáveis de ambiente
+.env
+
+# Dependências do Node (caso use Node.js no projeto)
+node_modules/
+
+# Cobertura de testes
+coverage/
+
+# Banco de dados simulado
+bd.json
+
+# Arquivos específicos de IDEs e sistemas operacionais
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Arquivos de testes
+*.spec.js
+*.test.js

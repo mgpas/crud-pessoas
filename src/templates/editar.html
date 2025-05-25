@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Editar Pessoa</h2>
+    <form method="POST" action="{{ url_for('editar_pessoa', id=pessoa.id) }}">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <!-- 🐛 BUG-007 Fix - Adicionada validação com pattern para aceitar apenas letras com espaços -->
+            <!-- 🐛 BUG-011 Fix - Adicionado maxlength -->
+            <!-- 🐛 BUG-014 Fix - Manter dados já preenchidos ao receber erro -->
+            <input type="text" id="nome" name="nome" value="{{ dados.nome if dados else pessoa.nome }}" required maxlength="100" pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras são permitidas.">
+        </div>
+        
+        <div class="form-group">
+            <label for="sobrenome">Sobrenome:</label>
+            <!-- 🐛 BUG-007 Fix - Adicionada validação com pattern para aceitar apenas letras com espaços -->
+            <!-- 🐛 BUG-011 Fix - Adicionado maxlength -->
+            <!-- 🐛 BUG-014 Fix - Manter dados já preenchidos ao receber erro -->
+            <input type="text" id="sobrenome" name="sobrenome" value="{{ dados.sobrenome if dados else pessoa.sobrenome }}" required maxlength="100" pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras são permitidas.">
+        </div>
+        
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <!-- 🐛 BUG-014 Fix - Manter dados já preenchidos ao receber erro -->
+            <input type="text" id="cpf" name="cpf" value="{{ dados.cpf if dados else pessoa.cpf }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <!-- 🐛 BUG-014 Fix - Manter dados já preenchidos ao receber erro -->
+            <input type="date" id="data_nascimento" name="data_nascimento" value="{{ dados.data_de_nascimento if dados else pessoa.data_de_nascimento }}" required>
+        </div>
+        
+        <button type="submit" class="btn btn-danger">Salvar Alterações</button>
+        <!-- 🐛 BUG-002 Fix - Corrigido href de rota inexistente -->
+        <a href="{{ url_for('listar_pessoas') }}" class="btn">Cancelar</a>
+    </form>
+{% endblock %}
