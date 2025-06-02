@@ -6,12 +6,12 @@ Funcionalidade: Gerenciamento de Pessoas
 
   Cenário: Cadastro de pessoa com dados válidos
     Dado que estou na página de cadastro
-    Quando eu preencho o nome "João", sobrenome "Silva", CPF "12345678901" e data de nascimento "1990-05-10"
+    Quando eu preencho o nome "João", sobrenome "Silva", CPF "52998224725" e data de nascimento "1990-05-10"
     E clico em "Cadastrar"
     Então a nova pessoa deve aparecer na lista de pessoas
 
   Cenário: Cadastro com CPF duplicado
-    Dado que já existe uma pessoa cadastrada com o CPF "12345678901"
+    Dado que já existe uma pessoa cadastrada com o CPF "52998224725"
     Quando eu tento cadastrar outra pessoa com o mesmo CPF
     Então devo ver a mensagem de erro "CPF já cadastrado!"
 
@@ -20,7 +20,7 @@ Funcionalidade: Gerenciamento de Pessoas
     Então devo ver a mensagem de erro "Nome e sobrenome devem conter apenas letras."
 
   Cenário: Cadastro com data de nascimento futura
-    Quando eu tento cadastrar uma pessoa com a data de nascimento "2099-01-01"
+    Quando eu tento cadastrar uma pessoa com a data de nascimento "2025-06-25"
     Então devo ver a mensagem de erro "Data de nascimento inválida. Não pode ser futura."
 
   Cenário: Listagem de pessoas cadastradas
@@ -36,7 +36,7 @@ Funcionalidade: Gerenciamento de Pessoas
   Cenário: Edição com CPF duplicado
     Dado que existem duas pessoas cadastradas
     Quando eu tento editar uma usando o CPF da outra
-    Então devo ver a mensagem de erro "CPF já cadastrado!"
+    Então devo ver a mensagem de erro "CPF já cadastrado em outro registro!"
 
   Cenário: Remoção de pessoa cadastrada
     Dado que existe uma pessoa cadastrada

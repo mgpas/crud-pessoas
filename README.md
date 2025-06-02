@@ -26,6 +26,7 @@ crud-pessoas/
 │       └── pessoas.db          # Banco de dados SQLite (gerado ao iniciar a aplicação)
 ├── features/
 │   ├── pessoa.feature          # Testes BDD no formato Gherkin
+│   ├── environment.py
 │   └── steps/
 │       └── pessoa_steps.py     # Implementação dos steps do Behave
 ├── venv/                       # Inicie o venv na raiz do projeto
@@ -84,6 +85,17 @@ python src/app.py
 
 ---
 
+## 🧪 Testando CRUD de Pessoas
+
+Para usar o projeto localmente:
+
+```bash
+# Execute o Behave (não execute o app.py ao mesmo tempo)
+$env:PYTHONPATH="src"; behave features/
+```
+
+---
+
 ## 📋 Funcionalidades
 
 - Cadastrar nova pessoa com validações de nome, sobrenome, CPF e data.
@@ -101,7 +113,7 @@ python src/app.py
 
 | ID    | Nome do Caso de Teste                             | Tipo              | Pré-condições               | Passos                                                                 | Resultado Esperado                                                     |
 |--------|---------------------------------------------------|-------------------|-----------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------|
-| CT01 | Cadastro válido de pessoa                         | Funcional / Unit  | Sistema em execução         | Preencher nome, sobrenome, CPF e data válidos → Enviar                | Pessoa cadastrada e exibida na lista                                  |
+| CT01 | Cadastro válido de pessoa                         | Funcional         | Sistema em execução         | Preencher nome, sobrenome, CPF e data válidos → Enviar                | Pessoa cadastrada e exibida na lista                                  |
 | CT02 | Cadastro com CPF duplicado                        | Funcional         | Pessoa com CPF já existe    | Preencher CPF repetido → Enviar                                       | Alerta "CPF já cadastrado"                                            |
 | CT03 | Cadastro com nome inválido                        | Funcional         | Sistema em execução         | Preencher nome como "João123" → Enviar                                | Alerta "Apenas letras"                                                |
 | CT04 | Cadastro com data futura                          | Funcional         | Sistema em execução         | Preencher data como 2099-01-01 → Enviar                               | Alerta "Data de nascimento inválida"                                  |
